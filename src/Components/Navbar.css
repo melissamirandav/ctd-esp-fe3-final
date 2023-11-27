@@ -1,0 +1,33 @@
+/* Estilos para el navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  /* Estilos para los temas */
+  .light-theme {
+    background-color: #eee;
+    color: black;
+  }
+  
+  .dark-theme {
+    background-color: #333;
+    color: white;
+  }
+  
+  /* Estilos para los enlaces */
+  .nav-link {
+    text-decoration: none;
+    color: black;
+  }
+
+  .navbar-items ul {
+    list-style: none;
+    display: flex; /* Mostrar los elementos de lista en línea */
+    margin: 0;
+    padding: 0;
+  }
+  
