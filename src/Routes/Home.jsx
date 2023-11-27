@@ -7,8 +7,8 @@ import React, { useContext, useEffect, useMemo }  from 'react';
 
 const Home = () => {
   const {state, getData} = useContext(ContextGlobal)
-  useEffect(()=>{getData()},[getData]);
-  console.log(state)
+  useEffect(()=>{getData()},[]);
+  
   const memoIzedData = useMemo(()=>state.data, [state.data]);
 
   if(state.loading){
@@ -23,7 +23,7 @@ const Home = () => {
     <main className={state.theme} >
       <h1>Home</h1>
       <div className='card-grid'>
-        {memoIzedData.map((item)=>( <Card name={item.name} username={item.username} id={item.id}/>))}
+        {memoIzedData.map((item)=>( <Card key={item.id} name={item.name} username={item.username} id={item.id}/>))}
        
       </div>
     </main>
