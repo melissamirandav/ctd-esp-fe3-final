@@ -1,17 +1,30 @@
 
 import Card from '../Components/Card'
 import { ContextGlobal } from '../Components/utils/global.context';
-import React, { useContext }  from 'react';
+import React, { useContext, useEffect, useMemo }  from 'react';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const {state} = useContext(ContextGlobal)
+  const {state, getData} = useContext(ContextGlobal)
+  useEffect(()=>{getData()},[getData]);
+  console.log(state)
+  const memoIzedData = useMemo(()=>state.data, [state.data]);
+
+  if(state.loading){
+    return <div>Cargando...</div>
+  }
+
+  if(state.error){
+    return <div>Error: {state.error}</div>
+  }
+
   return (
     <main className={state.theme} >
       <h1>Home</h1>
       <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */}
+        {memoIzedData.map((item)=>( <Card name={item.name} username={item.username} id={item.id}/>))}
+       
       </div>
     </main>
   )
