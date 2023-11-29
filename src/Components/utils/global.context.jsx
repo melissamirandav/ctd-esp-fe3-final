@@ -1,20 +1,31 @@
 import { createContext, useEffect, useReducer } from "react";
+import { actionTypes } from "./actionTypes";
 
-export const initialState = {theme: "dark", data: [], loading: false, error: null}
+export const initialState = { theme: "dark", data: [], loading: false, error: null }
 
 export const ContextGlobal = createContext(undefined);
 
-const reducer = (state, action)=>{
-  
+
+
+const reducer = (state, action) => {
+
   switch (action.type) {
-    case "ChangeTheme":
-      return {...state, theme: action.payload}
-    case "FetchStart":
-      return {...state, loading: true} 
-    case "FetchError":
-      return {...state, error: action.payload, loading: false}
-    case "getData":
-      return {...state, data: action.payload, error: null, loading: false}  
+    case actionTypes.CHANGE_THEME:
+      return { ...state, theme: action.payload }
+    case actionTypes.FETCH_START:
+      return { ...state, loading: true }
+    case actionTypes.FETCH_ERROR:
+      return { ...state, error: action.payload, loading: false }
+    case actionTypes.GET_DATA:
+      return { ...state, data: action.payload, error: null, loading: false }
+    case actionTypes.IS_FAVORITE:
+      return { ...state, isFavorite: action.payload }
+    case actionTypes.ADD_FAVORITE:
+      localStorage.setItem('favorites', JSON.stringify(action.payload));
+      return { ...state, isFavorite: true }
+    case actionTypes.REMOVE_FAVORITE:
+      localStorage.setItem('favorites', JSON.stringify(action.payload));
+      return { ...state, isFavorite: false }
     default: return state;
   }
 }
@@ -26,23 +37,23 @@ export const ContextProvider = ({ children }) => {
 
   const getData = async () => {
     try {
-      action({type: "FetchStart"})
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    const data = await response.json();
-    action({type: "getData", payload: data})
+      action({ type: actionTypes.FETCH_START })
+      const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
+      const data = await response.json();
+      action({ type: actionTypes.GET_DATA, payload: data })
     } catch (error) {
-      action({type: "FetchError", payload: error});
+      action({ type: actionTypes.FETCH_ERROR, payload: error });
     }
-    
+
   }
 
-  const ChangeTheme = () =>{
+  const ChangeTheme = () => {
     const newTheme = state.theme === 'light' ? 'dark' : 'light';
-    
-    action({type: 'ChangeTheme', payload:newTheme})
+
+    action({ type: actionTypes.CHANGE_THEME, payload: newTheme })
   }
 
-  const contextValue = {state, ChangeTheme, getData};
+  const contextValue = { state, ChangeTheme, getData, action };
 
   return (
     <ContextGlobal.Provider value={contextValue}>
