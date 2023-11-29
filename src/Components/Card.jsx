@@ -23,7 +23,7 @@ const reducer = (state, action) => {
   }
 }
 
-const Card = ({ name, username, id }) => {
+const Card = ({ name, username, id, show }) => {
 const [state, action] = useReducer(reducer, initialState);
 
 
@@ -54,17 +54,21 @@ const [state, action] = useReducer(reducer, initialState);
   return (
     <div className="card">
       <div>
-        <h2>ID: {id}</h2>
+        <img src="/images/doctor.jpg" width={250} height={190}/>
+      </div>
+      <div>
         <h3>{name}</h3>
         <p>@{username}</p>
       </div>
-      <div>
+      <div className='iconos'>
       {state.isFavorite ? (
-          <button onClick={removeFav}>Quitar de Favoritos</button>
-        ) : (
-          <button onClick={addFav}>Agregar a Favoritos</button>
+          <img onClick={removeFav} src='/images/removefav.jpg' width={30} alt='remover-favorito'/>
+        ) : ( show?
+          <img onClick={addFav} src='/images/agregarfav.png' width={30} alt='agregar-favorito'/>:null
         )}
-        <Link to={`/dentist/${id}`}>Detalles</Link>
+        <Link to={`/dentist/${id}`} margin={0}>
+          <img src="/images/detalle.png" width={30} alt='detalle-dentista'/>
+        </Link>
       </div>
     </div>
   );

@@ -20,10 +20,10 @@ const Home = () => {
   }
 
   return (
-    <main className={state.theme} >
+    <main >
       <h1>Home</h1>
       <div className='card-grid'>
-        {memoIzedData.map((item)=>( <Card key={item.id} name={item.name} username={item.username} id={item.id}/>))}
+        {memoIzedData.map((item)=>( <Card key={item.id} show={true} name={item.name} username={item.username} id={item.id}/>))}
        
       </div>
     </main>

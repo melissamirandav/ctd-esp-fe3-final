@@ -10,25 +10,25 @@ const Navbar = () => {
   const {state, ChangeTheme} = useContext(ContextGlobal)
   
   return (
-    <nav className={`navbar ${state.theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
+    <nav className={state.theme}>
       <div className="navbar-logo">
         <img src="/images/logo.jpeg" alt="Logo" />
       </div>
-      <div className="navbar-items">
-        <ul>
-          <li>
+      <div className="menu">
+        
             <Link to="/home" className={`nav-link `}>Home</Link>
-          </li>
-          <li>
+          
             <Link to="/favs" className={`nav-link `}>Favs</Link>
-          </li>
-          <li>
+         
             <Link to="/contact" className={`nav-link `}>Contact</Link>
-          </li>
-        </ul>
+        
       </div>
       <div className="theme-toggle">
-      <button onClick={(e)=>ChangeTheme()} className={state.theme}>Change theme</button>
+      <button onClick={(e)=>ChangeTheme()} className='theme-button'> 
+
+        <img width={40} src={state.theme == 'dark' ? '/images/sol.png' : '/images/luna.png'} />
+      
+      </button>
       </div>
     </nav>
   );
