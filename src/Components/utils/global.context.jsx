@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import { actionTypes } from "./actionTypes";
 
 export const initialState = { theme: "dark", data: [], loading: true, error: null, id: null, detail:{}}

@@ -6,14 +6,17 @@ import { ContextGlobal } from "../Components/utils/global.context";
 
 const Favs = () => {
   const {state} = useContext(ContextGlobal)
+  const [favorites, setFavorites] = useState([]);
   
-  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
   useEffect(() => {
-    favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(storedFavorites);
   }, [state.id]);
 
-
+  if(favorites.length === 0){
+    return <div>No tiene favoritos agregados...</div>
+  }
   return (
     <>
       <h1>Dentists Favs</h1>

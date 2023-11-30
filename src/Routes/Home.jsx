@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useMemo }  from 'react';
 
 const Home = () => {
   const {state, getData} = useContext(ContextGlobal)
-  useEffect(()=>{getData()},[]);
+  useEffect(()=>{getData()}, []);
   
   const memoIzedData = useMemo(()=>state.data, [state.data]);
 

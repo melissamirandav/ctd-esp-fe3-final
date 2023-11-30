@@ -5,7 +5,7 @@ import { actionTypes } from "./utils/actionTypes";
 
 
 const Card = ({ name, username, id, show }) => {
-const {state, action} = useContext(ContextGlobal)
+const { action} = useContext(ContextGlobal)
 const [isFavorite, setFavorite] = useState(false)
 
 
@@ -29,7 +29,7 @@ const [isFavorite, setFavorite] = useState(false)
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     const existingIndex = favorites.findIndex((item) => item.id === id);
 
-    if (existingIndex != -1) {
+    if (existingIndex !== -1) {
       favorites.splice(existingIndex, 1);
       action({type: actionTypes.REMOVE_FAVORITE, payload:favorites, id:id })
       setFavorite(false)

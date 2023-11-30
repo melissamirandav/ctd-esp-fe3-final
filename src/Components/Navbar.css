@@ -30,4 +30,8 @@
     margin: 0;
     padding: 0;
   }
+
+  .nav-link.active{
+    color:rgb(4, 133, 192) !important;
+  }
   

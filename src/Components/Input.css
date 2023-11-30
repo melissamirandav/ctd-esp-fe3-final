@@ -1,0 +1,38 @@
+.input-label{
+    width: 160px;
+  }
+  .input-container {
+    margin-bottom: 15px;
+  }
+  
+  /* Clase para crear un contenedor flex */
+  .input-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .input-label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #339af0;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

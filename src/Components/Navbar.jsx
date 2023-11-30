@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {ContextGlobal} from './utils/global.context'
-import { Link } from 'react-router-dom'
+import {  NavLink } from 'react-router-dom'
 import "./Navbar.css"
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -16,17 +16,17 @@ const Navbar = () => {
       </div>
       <div className="menu">
         
-            <Link to="/home" className={`nav-link `}>Home</Link>
+            <NavLink to="/home" className={`nav-link `}>Home</NavLink>
           
-            <Link to="/favs" className={`nav-link `}>Favs</Link>
+            <NavLink to="/favs" className={`nav-link `}>Favs</NavLink>
          
-            <Link to="/contact" className={`nav-link `}>Contact</Link>
+            <NavLink to="/contact" className={`nav-link `}>Contact</NavLink>
         
       </div>
       <div className="theme-toggle">
       <button onClick={(e)=>ChangeTheme()} className='theme-button'> 
 
-        <img width={40} src={state.theme == 'dark' ? '/images/sol.png' : '/images/luna.png'} />
+        <img width={40} src={state.theme === 'dark' ? '/images/sol.png' : '/images/luna.png'} alt='cambiar-tema' />
       
       </button>
       </div>
