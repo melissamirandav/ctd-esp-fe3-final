@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className={state.theme}>
       <div className="navbar-logo">
-        <img src="/images/logo.jpeg" alt="Logo" />
+        <img src="/images/logo.png" alt="Logo" width={70}/>
       </div>
       <div className="menu">
         

@@ -11,7 +11,7 @@ const [isFavorite, setFavorite] = useState(false)
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    action({type: actionTypes.IS_FAVORITE, payload:favorites.some((item) => item.id === id) })
+    action({type: actionTypes.IS_FAVORITE, payload:id })
     setFavorite(favorites.some((item) => item.id === id))
 
   }, [id]);
@@ -20,7 +20,7 @@ const [isFavorite, setFavorite] = useState(false)
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     const newFavorite = { id, name, username };
     favorites.push(newFavorite);
-    action({type: actionTypes.ADD_FAVORITE, payload:favorites})
+    action({type: actionTypes.ADD_FAVORITE, payload:favorites, id:id})
     setFavorite(true)
 
   }
@@ -31,7 +31,7 @@ const [isFavorite, setFavorite] = useState(false)
 
     if (existingIndex != -1) {
       favorites.splice(existingIndex, 1);
-      action({type: actionTypes.REMOVE_FAVORITE, payload:favorites })
+      action({type: actionTypes.REMOVE_FAVORITE, payload:favorites, id:id })
       setFavorite(false)
     }
   };
@@ -48,7 +48,7 @@ const [isFavorite, setFavorite] = useState(false)
       </div>
       <div className='iconos'>
       {isFavorite ? (
-          <img onClick={removeFav} src='/images/removefav.jpg' width={30} alt='remover-favorito'/>
+          <img onClick={removeFav} src='/images/removefav.png' width={30} alt='remover-favorito'/>
         ) : ( show?
           <img onClick={addFav} src='/images/agregarfav.png' width={30} alt='agregar-favorito'/>:null
         )}

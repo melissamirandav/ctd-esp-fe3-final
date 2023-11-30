@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { ContextGlobal } from "./Components/utils/global.context";
 
 
+
 function App() {
   const {state} = useContext(ContextGlobal)
   return (

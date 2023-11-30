@@ -7,5 +7,6 @@ export const actionTypes = {
     FETCH_START: 'FETCH_START',
     FETCH_ERROR: 'FETCH_ERROR',
     GET_DATA: 'GET_DATA',
+    GET_DETAILS: 'GET_DETAILS',
   };
   

@@ -7,12 +7,11 @@ import { ContextGlobal } from "../Components/utils/global.context";
 const Favs = () => {
   const {state} = useContext(ContextGlobal)
   
-  const [favorites, setFavorites] = useState ([]);
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
   useEffect(() => {
-    setFavorites(JSON.parse(localStorage.getItem('favorites')) || [])
-    console.log(favorites);
-  }, [state.isFavorite]);
+    favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  }, [state.id]);
 
 
   return (
