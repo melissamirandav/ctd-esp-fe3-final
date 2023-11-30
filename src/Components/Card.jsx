@@ -5,22 +5,22 @@ import { actionTypes } from "./utils/actionTypes";
 
 
 const Card = ({ name, username, id, show }) => {
-const { action} = useContext(ContextGlobal)
-const [isFavorite, setFavorite] = useState(false)
+  const { action } = useContext(ContextGlobal)
+  const [isFavorite, setFavorite] = useState(false)
 
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    action({type: actionTypes.IS_FAVORITE, payload:id })
+    action({ type: actionTypes.IS_FAVORITE, payload: id })
     setFavorite(favorites.some((item) => item.id === id))
 
   }, [id]);
 
-  const addFav = () =>{
+  const addFav = () => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     const newFavorite = { id, name, username };
     favorites.push(newFavorite);
-    action({type: actionTypes.ADD_FAVORITE, payload:favorites, id:id})
+    action({ type: actionTypes.ADD_FAVORITE, payload: favorites, id: id })
     setFavorite(true)
 
   }
@@ -31,29 +31,29 @@ const [isFavorite, setFavorite] = useState(false)
 
     if (existingIndex !== -1) {
       favorites.splice(existingIndex, 1);
-      action({type: actionTypes.REMOVE_FAVORITE, payload:favorites, id:id })
+      action({ type: actionTypes.REMOVE_FAVORITE, payload: favorites, id: id })
       setFavorite(false)
     }
   };
 
-  
+
   return (
     <div className="card">
       <div>
-        <img src="/images/doctor.jpg" width={250} height={190} alt='imagen-dentista'/>
+        <img src="/images/doctor.jpg" width={250} height={190} alt='imagen-dentista' />
       </div>
       <div>
         <h3>{name}</h3>
         <p>@{username}</p>
       </div>
       <div className='iconos'>
-      {isFavorite ? (
-          <img onClick={removeFav} src='/images/removefav.png' width={30} alt='remover-favorito'/>
-        ) : ( show?
-          <img onClick={addFav} src='/images/agregarfav.png' width={30} alt='agregar-favorito'/>:null
+        {isFavorite ? (
+          <img onClick={removeFav} src='/images/removefav.png' width={30} alt='remover-favorito' />
+        ) : (show ?
+          <img onClick={addFav} src='/images/agregarfav.png' width={30} alt='agregar-favorito' /> : null
         )}
         <Link to={`/dentist/${id}`} margin={0}>
-          <img src="/images/detalle.png" width={30} alt='detalle-dentista'/>
+          <img src="/images/detalle.png" width={30} alt='detalle-dentista' />
         </Link>
       </div>
     </div>

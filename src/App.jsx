@@ -12,23 +12,23 @@ import { ContextGlobal } from "./Components/utils/global.context";
 
 
 function App() {
-  const {state} = useContext(ContextGlobal)
+  const { state } = useContext(ContextGlobal)
   return (
-      <div className="App">
-          <Navbar/>
-          <div className= {`container ${state.theme}`}>
-        
-          <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/dentist/:id" element={<Detail/>}/>
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="/favs" element={<Favs/>}/> 
-          </Routes>
-          </div>
-          
-          <Footer/>
+    <div className="App">
+      <Navbar />
+      <div className={`container ${state.theme}`}>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/dentist/:id" element={<Detail />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/favs" element={<Favs />} />
+        </Routes>
       </div>
+
+      <Footer />
+    </div>
   );
 }
 

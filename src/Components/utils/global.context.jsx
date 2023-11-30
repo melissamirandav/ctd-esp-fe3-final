@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 import { actionTypes } from "./actionTypes";
 
-export const initialState = { theme: "dark", data: [], loading: true, error: null, id: null, detail:{}}
+export const initialState = { theme: "dark", data: [], loading: true, error: null, id: null, detail: {} }
 
 export const ContextGlobal = createContext(undefined);
 

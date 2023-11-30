@@ -1,37 +1,37 @@
 /* Estilos para el navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  /* Estilos para los temas */
-  .light-theme {
-    background-color: #eee;
-    color: black;
-  }
-  
-  .dark-theme {
-    background-color: #333;
-    color: white;
-  }
-  
-  /* Estilos para los enlaces */
-  .nav-link {
-    text-decoration: none;
-    color: black;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
 
-  .navbar-items ul {
-    list-style: none;
-    display: flex; /* Mostrar los elementos de lista en línea */
-    margin: 0;
-    padding: 0;
-  }
+/* Estilos para los temas */
+.light-theme {
+  background-color: #eee;
+  color: black;
+}
 
-  .nav-link.active{
-    color:rgb(4, 133, 192) !important;
-  }
-  
+.dark-theme {
+  background-color: #333;
+  color: white;
+}
+
+/* Estilos para los enlaces */
+.nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-items ul {
+  list-style: none;
+  display: flex;
+  /* Mostrar los elementos de lista en línea */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link.active {
+  color: rgb(4, 133, 192) !important;
+}

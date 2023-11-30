@@ -1,21 +1,21 @@
 
 import Card from '../Components/Card'
 import { ContextGlobal } from '../Components/utils/global.context';
-import React, { useContext, useEffect, useMemo }  from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const {state, getData} = useContext(ContextGlobal)
-  useEffect(()=>{getData()}, []);
-  
-  const memoIzedData = useMemo(()=>state.data, [state.data]);
+  const { state, getData } = useContext(ContextGlobal)
+  useEffect(() => { getData() }, []);
 
-  if(state.loading){
+  const memoIzedData = useMemo(() => state.data, [state.data]);
+
+  if (state.loading) {
     return <div>Cargando...</div>
   }
 
-  if(state.error){
+  if (state.error) {
     return <div>Error: {state.error}</div>
   }
 
@@ -23,8 +23,8 @@ const Home = () => {
     <main >
       <h1>Home</h1>
       <div className='card-grid'>
-        {memoIzedData.map((item)=>( <Card key={item.id} show={true} name={item.name} username={item.username} id={item.id}/>))}
-       
+        {memoIzedData.map((item) => (<Card key={item.id} show={true} name={item.name} username={item.username} id={item.id} />))}
+
       </div>
     </main>
   )

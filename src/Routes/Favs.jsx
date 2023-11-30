@@ -5,24 +5,30 @@ import { ContextGlobal } from "../Components/utils/global.context";
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Favs = () => {
-  const {state} = useContext(ContextGlobal)
+  const { state } = useContext(ContextGlobal)
   const [favorites, setFavorites] = useState([]);
-  
+
+  const reset = () => {
+    localStorage.clear();
+    setFavorites([]);
+  }
+
   useEffect(() => {
-    
+
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(storedFavorites);
   }, [state.id]);
 
-  if(favorites.length === 0){
+  if (favorites.length === 0) {
     return <div>No tiene favoritos agregados...</div>
   }
+
   return (
     <>
-      <h1>Dentists Favs</h1>
+      <h1>Dentists Favs <img src="/images/reiniciar.png" alt="resetear" width={32} onClick={reset} /> </h1>
       <div className="card-grid">
-        {favorites.map((item)=>( <Card key={item.id} show={false} name={item.name} username={item.username} id={item.id}/>))}
-      
+        {favorites.map((item) => (<Card key={item.id} show={false} name={item.name} username={item.username} id={item.id} />))}
+
       </div>
     </>
   );
